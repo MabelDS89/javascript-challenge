@@ -46,28 +46,25 @@ function createChange() {
 
         console.log(filteredData);
 
-    // while(Object.entries(inputdict).forEach(([key, value]) => {
-    //     filteredData = filteredData.filter(x => x[key] === value)) {console.log(filteredData);
+        if (filteredData != 0) {
+            // Remove any children from the tbody        
+            tbody.html("");
 
-// Remove any children from the tbody        
-        tbody.html("");
+            // Use d3 to append one table row `tr` for each data object
+            filteredData.forEach(function (UFOs) {
+                console.log(UFOs);
+                var row = tbody.append("tr");
 
-// Use d3 to append one table row `tr` for each data object
-        filteredData.forEach(function (UFOs) {
-            console.log(UFOs);
-            var row = tbody.append("tr");
-        
-// Use `Object.entries` to console.log each data value
-            Object.entries(UFOs).forEach(function ([key, value]) {
-                console.log(key, value);
-                var cell = row.append("td");
-                cell.text(value);
+                // Use `Object.entries` to console.log each data value
+                Object.entries(UFOs).forEach(function ([key, value]) {
+                    console.log(key, value);
+                    var cell = row.append("td");
+                    cell.text(value);
+                });
             });
-        }); 
-        
-    //     else {console.log(`No search results found matching your search criteria. Please try again.`);}
-    
-    // };
-
+        }
+        else {
+            alert("No results found")
+        }
     })
 };
